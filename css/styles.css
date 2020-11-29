@@ -1,0 +1,21 @@
+
+body{
+border:solid 1px teal;
+}
+.top{
+   background-color: tan;
+   height: 100px;
+    margin-top: 2px;
+    border-left: 20px;
+}
+.mid{
+    background-color: teal ;
+    height: 200px;
+
+}
+.bottom{
+    background-color: red ;
+    height: 200px;
+
+
+}
