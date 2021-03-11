@@ -9,13 +9,13 @@ fig = plt.figure('c2')
 ax = plt.axes() 
 line, = ax.plot([], [], lw=4) 
 def derivative(x):
-    x=4*x**3
+    x=2*x
     return(x)
 def function(x):
-    x=x**4
+    x=x**2
     return(x)
 error=5
-starting_point=120
+starting_point=420
 increment=.1
 last=500
 up_looper=starting_point*3
@@ -33,11 +33,11 @@ while (x<point):
   plot_y.append(function(lw_loower))
   lw_loower=lw_loower+increment
 plt.plot(plot_x,plot_y,'--')
-increment=100
+increment=starting_point*2
 y_data.append(function(starting_point))
 x_data.append((starting_point))
 counter=0
-while(abs(error)>.005):
+while(abs(error)>.05):
     if(abs(derivative(starting_point+increment))<abs(derivative(starting_point-increment))):
         starting_point=starting_point+increment
         error= abs(derivative(starting_point))
@@ -52,8 +52,9 @@ while(abs(error)>.005):
     if starting_point==0:
       break
     counter=counter+1
-    increment=increment-starting_point/counter
+    increment=increment*(.9)
 print(starting_point)
+print(len(x_data))
 # initialization function 
 def init(): 
     # creating an empty plot/frame 
