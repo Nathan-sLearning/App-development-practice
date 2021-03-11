@@ -1,20 +1,21 @@
 import matplotlib.pyplot as plt 
 import matplotlib.animation as animation 
 import numpy as np 
+import math
+
 y_data=[]
 x_data=[]
 fig = plt.figure('c2') 
 ax = plt.axes() 
 line, = ax.plot([], [], lw=4) 
 def derivative(x):
-    x=x*x
-    x=x*3
+    x=4*x**3
     return(x)
 def function(x):
-    x=x*x*x
+    x=x**4
     return(x)
 error=5
-starting_point=7
+starting_point=120
 increment=.1
 last=500
 up_looper=starting_point*3
@@ -32,9 +33,12 @@ while (x<point):
   plot_y.append(function(lw_loower))
   lw_loower=lw_loower+increment
 plt.plot(plot_x,plot_y,'--')
-increment=.05
+increment=100
+y_data.append(function(starting_point))
+x_data.append((starting_point))
+counter=0
 while(abs(error)>.005):
-    if(derivative(starting_point+increment)<derivative(starting_point-increment)):
+    if(abs(derivative(starting_point+increment))<abs(derivative(starting_point-increment))):
         starting_point=starting_point+increment
         error= abs(derivative(starting_point))
         last=starting_point
@@ -45,6 +49,10 @@ while(abs(error)>.005):
         last=starting_point
     y_data.append(function(starting_point))
     x_data.append((starting_point))
+    if starting_point==0:
+      break
+    counter=counter+1
+    increment=increment-starting_point/counter
 print(starting_point)
 # initialization function 
 def init(): 
